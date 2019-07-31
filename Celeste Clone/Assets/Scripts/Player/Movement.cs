@@ -101,11 +101,24 @@ public class Movement : MonoBehaviour
     }
 
     private void WallJump(){
-        
+        rb.velocity += Vector2.one * jumpForce * -collisionDetection.Wall;
+
     }
 
     private void Move(Vector2 direction){
         //? Splitting into a function to make it easier to find and change 
-        rb.velocity = direction;
+
+        if (!collisionDetection.grounded && direction.x == 0) {
+            return;
+        } else {
+            if (collisionDetection.Wall == 0)
+                rb.velocity = direction;
+
+            if (collisionDetection.Wall == 1 && collisionDetection.grounded && direction.x < 0) 
+                rb.velocity = direction;
+            
+            if (collisionDetection.Wall == -1 && collisionDetection.grounded && direction.x > 0) 
+                rb.velocity = direction;
+        }
     }
 }

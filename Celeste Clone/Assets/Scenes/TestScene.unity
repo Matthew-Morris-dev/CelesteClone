@@ -577,7 +577,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1248095142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -637,6 +637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounded: 0
   onWall: 0
+  Wall: 0
   CollisionLayer:
     serializedVersion: 2
     m_Bits: 512
