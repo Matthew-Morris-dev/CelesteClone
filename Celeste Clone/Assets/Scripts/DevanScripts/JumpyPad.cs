@@ -10,7 +10,13 @@ public class JumpyPad : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            AddJumpyPadForce(jumpForce, collision.gameObject);
+            foreach (ContactPoint2D hitPos in collision.contacts)
+            {
+                if (hitPos.normal.y == -1)
+                {
+                    AddJumpyPadForce(jumpForce, collision.gameObject);
+                }
+            }
         }
     }
 
