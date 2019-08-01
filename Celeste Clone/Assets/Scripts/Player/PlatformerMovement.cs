@@ -19,6 +19,7 @@ public class PlatformerMovement : MonoBehaviour
         public float moveSpeed = 5f; 
         public float jumpForce = 3f;
         public float fallMultiplier = 2.5f;
+        public float slideSpeedMultiplier = 0.7f;
         private bool wallGrab;
         private int wallJumpModifier = 0;
     
@@ -47,8 +48,10 @@ public class PlatformerMovement : MonoBehaviour
                 Jump(x, y);
         }
 
-        if (!coll.grounded && !Input.GetButton("Jump")) {
-            rb.velocity += (Physics2D.gravity * (fallMultiplier - 1) ) * Time.deltaTime;
+        if (rb.velocity.y < 0) {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;  
+        } else if (rb.velocity.y > 0 && !Input.GetButton("Jump")) {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1.5f) * Time.deltaTime; 
         }
 
         if (wallGrab) {
@@ -72,48 +75,48 @@ public class PlatformerMovement : MonoBehaviour
             rb.velocity = new Vector2 (x * moveSpeed, rb.velocity.y);
         } 
 
-        if (wallGrab) {
+        if (wallGrab) { // Holding the wall
             rb.velocity = new Vector2 (rb.velocity.x, y * moveSpeed);
-        } else if (!coll.onWall) {
+        } else if (!coll.onWall) { // Not holding and not near the wall
             rb.velocity = new Vector2 ( (x+wallJumpModifier) * moveSpeed, rb.velocity.y);
-        } else {
+        } else { // Not holding but on the wall
             if ( Mathf.RoundToInt(x + coll.Wall) != 0 ) {
-                rb.velocity = new Vector2 (rb.velocity.x, 0.7f * rb.velocity.y);
+                rb.velocity = new Vector2 (rb.velocity.x, 0.7f * rb.velocity.y); // Sliding
             } else {
-                rb.velocity = new Vector2 (x, 0.7f * rb.velocity.y);
+                rb.velocity = new Vector2 (x, rb.velocity.y); // Sliding
             }
-        }
+        } 
     
     }
 
     private void Jump (float x, float y) {
-        if (!coll.grounded && !coll.onWall) 
+        if (!coll.grounded && !coll.onWall) // Jump when in air and not near wall
             return; 
 
-        if (x == 0 && !coll.onWall) {
+        if (x == 0 && !coll.onWall) { // Jump when grounded and not pressing arrows or near wall
             rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
-        } else if (wallGrab) {
+        } else if (wallGrab) { // Jump while holding the wall
             switch (coll.Wall) {
                 case -1: //Wall on the left of the character
-                    if (x < 0) {
-                        rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
+                    if (x <= 0) {
+                        rb.velocity = new Vector2 (rb.velocity.x, 2 * jumpForce);
                     } else {
                         rb.velocity = new Vector2 (rb.velocity.x + x * jumpForce, jumpForce);
                     }
                     break;
                 case 1: //Wall on the right of the character
-                    if (x > 0) {
-                        rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
+                    if (x >= 0) {
+                        rb.velocity = new Vector2 (rb.velocity.x, 2 * jumpForce);
                     } else {
                         rb.velocity = new Vector2 (rb.velocity.x + x * jumpForce, jumpForce);
                     }
                     break;
             }
             
-        } else if (coll.onWall) {
+        } else if (coll.onWall) { //Jump while on wall but not holding
                 rb.velocity = new Vector2 (rb.velocity.x - jumpForce * coll.Wall, jumpForce);
                 wallJumpModifier = -coll.Wall;
-        } else {
+        } else { // Jump while grounded and pressing arrows
             rb.velocity = new Vector2 (x * jumpForce, jumpForce);
         }
     }
