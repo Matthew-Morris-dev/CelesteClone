@@ -20,9 +20,11 @@ public class PlatformerMovement : MonoBehaviour
         public float jumpForce = 3f;
         public float fallMultiplier = 2.5f;
         public float slideSpeedMultiplier = 0.7f;
+        public float grabResetTime = 0.4f;
+        public bool facing; //*  True = Sprite Left, false = Sprite Right
         private bool wallGrab;
         private int wallJumpModifier = 0;
-    
+        private bool canGrab = true;
         
     // Start is called before the first frame update
     void Start()
@@ -35,13 +37,16 @@ public class PlatformerMovement : MonoBehaviour
     // Update is called once per frame
     void Update() {
         
-        wallGrab = coll.onWall && Input.GetButton("Grab");
+        wallGrab = coll.onWall && Input.GetButton("Grab") && canGrab;
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
         Move(x, y);
-        character.flipX = rb.velocity.x < 0;
+        if (x < 0) {facing = true;} 
+        if (x > 0) {facing = false;}
+        
+        character.flipX = facing;
 
         if (Input.GetButtonDown("Jump")) {
             if (coll.grounded || coll.onWall)
@@ -79,11 +84,15 @@ public class PlatformerMovement : MonoBehaviour
             rb.velocity = new Vector2 (rb.velocity.x, y * moveSpeed);
         } else if (!coll.onWall) { //? Not holding and not near the wall
             rb.velocity = new Vector2 ( (x+wallJumpModifier) * moveSpeed, rb.velocity.y);
-        } else { //? Not holding but on the wall
-            if ( Mathf.RoundToInt(x + coll.Wall) != 0 ) {
-                rb.velocity = new Vector2 (rb.velocity.x, 0.7f * rb.velocity.y); //? Sliding
-            } else {
-                rb.velocity = new Vector2 (x, rb.velocity.y); //? Not Sliding
+        } else { //? Not holding but on the wall 
+            if (rb.velocity.y < 0){
+                if ( Mathf.RoundToInt(x + coll.Wall) != 0 && Mathf.RoundToInt(x + coll.Wall) != coll.Wall ) {
+                    rb.velocity = new Vector2 (rb.velocity.x, slideSpeedMultiplier * rb.velocity.y); //? Sliding
+                    Debug.Log("Sliding");
+                } else {
+                    rb.velocity = new Vector2 (x, rb.velocity.y); //? Not Sliding
+                    Debug.Log("Not Sliding");
+                }
             }
         } 
     
@@ -96,6 +105,8 @@ public class PlatformerMovement : MonoBehaviour
         if (x == 0 && !coll.onWall) { // Jump when grounded and not pressing arrows or near wall
             rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
         } else if (wallGrab) { // Jump while holding the wall
+            canGrab = false;
+            Invoke("resetGrabStatus", grabResetTime);
             switch (coll.Wall) {
                 case -1: //Wall on the left of the character
                     if (x <= 0) {
@@ -119,5 +130,9 @@ public class PlatformerMovement : MonoBehaviour
         } else { // Jump while grounded and pressing arrows
             rb.velocity = new Vector2 (x * jumpForce, jumpForce);
         }
+    }
+
+    private void resetGrabStatus() {
+        canGrab = true;
     }
 }
