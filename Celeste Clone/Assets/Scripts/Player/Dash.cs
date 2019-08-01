@@ -34,8 +34,8 @@ public class Dash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        int x = Mathf.RoundToInt(Input.GetAxis("Horizontal"));
+        int y = Mathf.RoundToInt(Input.GetAxis("Vertical"));
 
         if (coll.grounded && timeToReset <= 0) {
             canDash = true;

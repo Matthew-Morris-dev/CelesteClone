@@ -22,6 +22,7 @@ public class PlatformerMovement : MonoBehaviour
         public float jumpDifference = 0.5f;
         public float slideSpeedMultiplier = 0.7f;
         public float grabResetTime = 0.4f;
+        public float climbingSpeed = 3f;
         public bool facing; //*  True = Sprite Left, false = Sprite Right
         private bool wallGrab;
         private int wallJumpModifier = 0;
@@ -82,7 +83,7 @@ public class PlatformerMovement : MonoBehaviour
         } 
 
         if (wallGrab) { //? Holding the wall
-            rb.velocity = new Vector2 (rb.velocity.x, y * moveSpeed);
+            rb.velocity = new Vector2 (rb.velocity.x, y * climbingSpeed);
         } else if (!coll.onWall) { //? Not holding and not near the wall
             rb.velocity = new Vector2 ( (x+wallJumpModifier) * moveSpeed, rb.velocity.y);
         } else { //? Not holding but on the wall 
@@ -111,14 +112,14 @@ public class PlatformerMovement : MonoBehaviour
             switch (coll.Wall) {
                 case -1: //Wall on the left of the character
                     if (x <= 0) {
-                        rb.velocity = new Vector2 (rb.velocity.x, 2 * jumpForce);
+                        rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
                     } else {
                         rb.velocity = new Vector2 (rb.velocity.x + x * jumpForce, jumpForce);
                     }
                     break;
                 case 1: //Wall on the right of the character
                     if (x >= 0) {
-                        rb.velocity = new Vector2 (rb.velocity.x, 2 * jumpForce);
+                        rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
                     } else {
                         rb.velocity = new Vector2 (rb.velocity.x + x * jumpForce, jumpForce);
                     }
