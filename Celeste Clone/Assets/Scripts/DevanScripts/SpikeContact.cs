@@ -12,7 +12,7 @@ public class SpikeContact : MonoBehaviour
             {
                 if(hitPos.normal.y == -1)
                 {
-                    GameObject.Find("SpawnPoints").GetComponent<SpawnPoints>().RespawnPlayer();
+                    GameObject.Find("SpawnPoints").GetComponent<SpawnPoints>().StartRespawnTransition();
                 }
             }
         }
