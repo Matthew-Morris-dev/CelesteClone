@@ -42,7 +42,9 @@ public class Dash : MonoBehaviour
             movement.enabled = true;
         } else if (timeToReset > 0) {
             timeToReset -= Time.deltaTime;
-        } 
+        } else {
+            movement.enabled = true;
+        }
 
         rb.drag = Mathf.Lerp (rb.drag, 0, dragRate * Time.deltaTime);
 
