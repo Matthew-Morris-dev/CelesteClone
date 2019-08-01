@@ -49,4 +49,8 @@ public class SpawnPoints : MonoBehaviour
         }
     }
 
+    public List<Transform> GetTargets()
+    {
+        return targets;
+    }
 }
