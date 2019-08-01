@@ -80,11 +80,15 @@ public class PlatformerMovement : MonoBehaviour
             rb.velocity = new Vector2 (rb.velocity.x, y * moveSpeed);
         } else if (!coll.onWall) { //? Not holding and not near the wall
             rb.velocity = new Vector2 ( (x+wallJumpModifier) * moveSpeed, rb.velocity.y);
-        } else { //? Not holding but on the wall
-            if ( Mathf.RoundToInt(x + coll.Wall) != 0 ) {
-                rb.velocity = new Vector2 (rb.velocity.x, slideSpeedMultiplier * rb.velocity.y); //? Sliding
-            } else {
-                rb.velocity = new Vector2 (x, rb.velocity.y); //? Not Sliding
+        } else { //? Not holding but on the wall 
+            if (rb.velocity.y < 0){
+                if ( Mathf.RoundToInt(x + coll.Wall) != 0 && Mathf.RoundToInt(x + coll.Wall) != coll.Wall ) {
+                    rb.velocity = new Vector2 (rb.velocity.x, slideSpeedMultiplier * rb.velocity.y); //? Sliding
+                    Debug.Log("Sliding");
+                } else {
+                    rb.velocity = new Vector2 (x, rb.velocity.y); //? Not Sliding
+                    Debug.Log("Not Sliding");
+                }
             }
         } 
     
