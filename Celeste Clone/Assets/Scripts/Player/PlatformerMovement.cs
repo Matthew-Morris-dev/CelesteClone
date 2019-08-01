@@ -33,12 +33,14 @@ public class PlatformerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        
         wallGrab = coll.onWall && Input.GetButton("Grab");
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
         Move(x, y);
+        character.flipX = rb.velocity.x < 0;
 
         if (Input.GetButtonDown("Jump")) {
             if (coll.grounded || coll.onWall)
@@ -61,12 +63,8 @@ public class PlatformerMovement : MonoBehaviour
             }
         }
 
-        if (rb.velocity.sqrMagnitude != 0) {
-            animControl.SetBool("Walking", true); 
-            character.flipX = rb.velocity.x < 0;
-        } else {
-            animControl.SetBool("Walking", false);
-        }
+        animControl.SetFloat("Motion_X", Mathf.Abs(rb.velocity.x));
+        //animControl.SetFloat("Motion_Y", rb.velocity.y);
     }
 
     private void Move (float x, float y) {
