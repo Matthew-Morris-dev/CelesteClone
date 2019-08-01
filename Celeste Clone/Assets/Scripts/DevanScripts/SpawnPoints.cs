@@ -33,6 +33,8 @@ public class SpawnPoints : MonoBehaviour
 
     public void RespawnPlayer()
     {
+        GameObject.Find("Transition").GetComponent<CelesteTransition>().Transition();
+
         switch(curr_level)
         {
             case 0:
@@ -47,4 +49,8 @@ public class SpawnPoints : MonoBehaviour
         }
     }
 
+    public List<Transform> GetTargets()
+    {
+        return targets;
+    }
 }
