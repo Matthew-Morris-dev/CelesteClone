@@ -17,7 +17,8 @@ public class Dash : MonoBehaviour
     [Header("Control Values")]
         public float DashStrength = 10;
         public float ResetTime = 0.25f;
-        public float drag = 3;
+        public float dragRate = 3;
+        public float MaxDrag = 12;
         [SerializeField] private bool canDash;
         [SerializeField] private float timeToReset = 0;
 
@@ -41,9 +42,9 @@ public class Dash : MonoBehaviour
             movement.enabled = true;
         } else if (timeToReset > 0) {
             timeToReset -= Time.deltaTime;
-        } else {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * drag * Time.deltaTime; 
-        }
+        } 
+
+        rb.drag = Mathf.Lerp (rb.drag, 0, dragRate * Time.deltaTime);
 
         if (coll.onWall) {
             movement.enabled = true;
@@ -62,6 +63,7 @@ public class Dash : MonoBehaviour
             timeToReset = ResetTime;
 
             rb.velocity = new Vector2 (x * DashStrength, y  * DashStrength);
+            rb.drag = MaxDrag;
             movement.enabled = false;
         }
     }
