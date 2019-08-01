@@ -67,7 +67,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         animControl.SetFloat("Motion_X", Mathf.Abs(rb.velocity.x));
-        //animControl.SetFloat("Motion_Y", rb.velocity.y);
+        //TODO animControl.SetFloat("Motion_Y", rb.velocity.y);
     }
 
     private void Move (float x, float y) {
@@ -75,15 +75,15 @@ public class PlatformerMovement : MonoBehaviour
             rb.velocity = new Vector2 (x * moveSpeed, rb.velocity.y);
         } 
 
-        if (wallGrab) { // Holding the wall
+        if (wallGrab) { //? Holding the wall
             rb.velocity = new Vector2 (rb.velocity.x, y * moveSpeed);
-        } else if (!coll.onWall) { // Not holding and not near the wall
+        } else if (!coll.onWall) { //? Not holding and not near the wall
             rb.velocity = new Vector2 ( (x+wallJumpModifier) * moveSpeed, rb.velocity.y);
-        } else { // Not holding but on the wall
+        } else { //? Not holding but on the wall
             if ( Mathf.RoundToInt(x + coll.Wall) != 0 ) {
-                rb.velocity = new Vector2 (rb.velocity.x, 0.7f * rb.velocity.y); // Sliding
+                rb.velocity = new Vector2 (rb.velocity.x, 0.7f * rb.velocity.y); //? Sliding
             } else {
-                rb.velocity = new Vector2 (x, rb.velocity.y); // Sliding
+                rb.velocity = new Vector2 (x, rb.velocity.y); //? Not Sliding
             }
         } 
     

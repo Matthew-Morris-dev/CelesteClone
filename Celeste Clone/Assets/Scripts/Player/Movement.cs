@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/* CREDIT WHERE CREDIT IS DUE
+/*  CREDIT WHERE CREDIT IS DUE
 
     The code written in this file was created with the asistance of a tutorial 
     made by Mix and Jam. The video is available on YouTube. 

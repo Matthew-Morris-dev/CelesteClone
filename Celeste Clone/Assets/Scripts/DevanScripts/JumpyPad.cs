@@ -8,15 +8,15 @@ public class JumpyPad : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            AddJumpyPadForce(jumpForce);
+            AddJumpyPadForce(jumpForce, collision.gameObject);
         }
     }
 
-    void AddJumpyPadForce(float added_force)
+    void AddJumpyPadForce(float added_force, GameObject player)
     {
-        GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity += Vector2.up * added_force;
+        player.GetComponent<Rigidbody2D>().velocity += Vector2.up * added_force;
     }
 
 }
