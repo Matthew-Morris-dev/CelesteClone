@@ -4,13 +4,16 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CollisionDetection))]
+[RequireComponent(typeof(Animator))]
 public class PlatformerMovement : MonoBehaviour
 {
     [Header("Component Reference")]
         [HideInInspector] public Rigidbody2D rb;
         [HideInInspector] public CollisionDetection coll;
+        [HideInInspector] public Animator animControl;
  
-    //! [Header("Object Reference")]
+    [Header("Object Reference")]
+        public SpriteRenderer character;
 
     [Header("Control Variables")]
         public float moveSpeed = 5f; 
@@ -25,6 +28,7 @@ public class PlatformerMovement : MonoBehaviour
     {
         if (!rb) rb = GetComponent<Rigidbody2D>();
         if (!coll) coll = GetComponent<CollisionDetection>();
+        if (!animControl) animControl = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -56,6 +60,13 @@ public class PlatformerMovement : MonoBehaviour
                 wallJumpModifier = 0;
             }
         }
+
+        if (rb.velocity.sqrMagnitude != 0) {
+            animControl.SetBool("Walking", true); 
+            character.flipX = rb.velocity.x < 0;
+        } else {
+            animControl.SetBool("Walking", false);
+        }
     }
 
     private void Move (float x, float y) {
@@ -80,7 +91,7 @@ public class PlatformerMovement : MonoBehaviour
     private void Jump (float x, float y) {
         if (!coll.grounded && !coll.onWall) 
             return; 
-            
+
         if (x == 0 && !coll.onWall) {
             rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
         } else if (wallGrab) {
