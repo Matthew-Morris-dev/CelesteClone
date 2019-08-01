@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        wallclimb = collisionDetection.onWall && Input.GetButton("Wall Climb");
+        wallclimb = collisionDetection.onWall && Input.GetButton("Grab");
 
         float x_direction = Input.GetAxis("Horizontal"); // Left and right movement
         float y_direction = Input.GetAxis("Vertical"); // Will need this later but for now its not being used
