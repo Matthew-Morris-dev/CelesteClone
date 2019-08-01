@@ -19,6 +19,7 @@ public class PlatformerMovement : MonoBehaviour
         public float moveSpeed = 5f; 
         public float jumpForce = 3f;
         public float fallMultiplier = 2.5f;
+        public float jumpDifference = 0.5f;
         public float slideSpeedMultiplier = 0.7f;
         public float grabResetTime = 0.4f;
         public bool facing; //*  True = Sprite Left, false = Sprite Right
@@ -56,7 +57,7 @@ public class PlatformerMovement : MonoBehaviour
         if (rb.velocity.y < 0) {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;  
         } else if (rb.velocity.y > 0 && !Input.GetButton("Jump")) {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1.5f) * Time.deltaTime; 
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - (jumpDifference + 1) ) * Time.deltaTime; 
         }
 
         if (wallGrab) {

@@ -53,11 +53,12 @@ public class Dash : MonoBehaviour
         if (canDash && Input.GetButtonDown("Dash")) {
 
             canDash = false;
-
-            if (movement.facing) {
-                x = x == 0 ? -1 : x;
-            } else {
-                x = x == 0 ?  1 : x;
+            if (y == 0) {
+                if (movement.facing) {
+                    x = x == 0 ? -1 : x;
+                } else {
+                    x = x == 0 ?  1 : x;
+                }
             }
 
             timeToReset = ResetTime;
