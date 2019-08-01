@@ -7,9 +7,9 @@ public class BreakingPlatform : MonoBehaviour
     Rigidbody2D rd_breakplat;
 
     [SerializeField]
-    private float Time_to_break;
+    private float time_to_break = 0.5f;
     [SerializeField]
-    private float Time_to_comeback;
+    private float time_to_comeback = 2f;
     
     void Start()
     {
@@ -20,8 +20,8 @@ public class BreakingPlatform : MonoBehaviour
     {
         if(collision.gameObject.name.Equals("Player"))
         {
-            Invoke("BreakPlatform", Time_to_break);
-            Invoke("BringBackPlat", Time_to_comeback);
+            Invoke("BreakPlatform", time_to_break);
+            Invoke("BringBackPlat", time_to_comeback);
         }
     }
 
