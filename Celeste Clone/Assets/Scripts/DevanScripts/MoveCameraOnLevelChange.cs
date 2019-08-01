@@ -9,13 +9,11 @@ public class MoveCameraOnLevelChange : MonoBehaviour
 
     public int currentlevel;
 
-    // Start is called before the first frame update
     void Start()
     {
         currentlevel = 0;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if(currentlevel == 1)
