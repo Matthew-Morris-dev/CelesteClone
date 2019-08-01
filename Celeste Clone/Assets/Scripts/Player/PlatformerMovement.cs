@@ -67,11 +67,20 @@ public class PlatformerMovement : MonoBehaviour
             rb.velocity = new Vector2 (rb.velocity.x, y * moveSpeed);
         } else if (!coll.onWall) {
             rb.velocity = new Vector2 ( (x+wallJumpModifier) * moveSpeed, rb.velocity.y);
+        } else {
+            if ( Mathf.RoundToInt(x + coll.Wall) != 0 ) {
+                rb.velocity = new Vector2 (rb.velocity.x, 0.7f * rb.velocity.y);
+            } else {
+                rb.velocity = new Vector2 (x, 0.7f * rb.velocity.y);
+            }
         }
     
     }
 
     private void Jump (float x, float y) {
+        if (!coll.grounded && !coll.onWall) 
+            return; 
+            
         if (x == 0 && !coll.onWall) {
             rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
         } else if (wallGrab) {
