@@ -21,6 +21,7 @@ public class PlatformerMovement : MonoBehaviour
         public float fallMultiplier = 2.5f;
         public float slideSpeedMultiplier = 0.7f;
         public float grabResetTime = 0.4f;
+        public bool facing; //*  True = Sprite Left, false = Sprite Right
         private bool wallGrab;
         private int wallJumpModifier = 0;
         private bool canGrab = true;
@@ -42,7 +43,10 @@ public class PlatformerMovement : MonoBehaviour
         float y = Input.GetAxis("Vertical");
 
         Move(x, y);
-        character.flipX = rb.velocity.x < 0;
+        if (x < 0) {facing = true;} 
+        if (x > 0) {facing = false;}
+        
+        character.flipX = facing;
 
         if (Input.GetButtonDown("Jump")) {
             if (coll.grounded || coll.onWall)

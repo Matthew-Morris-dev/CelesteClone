@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &387716604
 Transform:
   m_ObjectHideFlags: 0
@@ -536,6 +536,7 @@ GameObject:
   - component: {fileID: 1248095145}
   - component: {fileID: 1248095144}
   - component: {fileID: 1248095143}
+  - component: {fileID: 1248095146}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -667,6 +668,28 @@ MonoBehaviour:
   jumpForce: 6
   fallMultiplier: 2.5
   slideSpeedMultiplier: 0.7
+  grabResetTime: 0.4
+  facing: 0
+--- !u!114 &1248095146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248095139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c0af45616ff94448ce599ba19221d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  coll: {fileID: 0}
+  movement: {fileID: 0}
+  DashStrength: 8
+  ResetTime: 0.15
+  drag: 3
+  canDash: 0
+  timeToReset: 0
 --- !u!1 &1386758850
 GameObject:
   m_ObjectHideFlags: 0
