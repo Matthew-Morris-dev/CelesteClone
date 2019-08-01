@@ -17,6 +17,7 @@ public class PlatformerMovement : MonoBehaviour
         public float jumpForce = 3f;
         public float fallMultiplier = 2.5f;
         private bool wallGrab;
+        private int wallJumpModifier = 0;
     
         
     // Start is called before the first frame update
@@ -49,24 +50,31 @@ public class PlatformerMovement : MonoBehaviour
         } else {
             rb.gravityScale = 1;
         }
+
+        if (wallJumpModifier != 0) {
+            if (coll.grounded) {
+                wallJumpModifier = 0;
+            }
+        }
     }
 
     private void Move (float x, float y) {
         if (coll.grounded) {
             rb.velocity = new Vector2 (x * moveSpeed, rb.velocity.y);
         } 
+
         if (wallGrab) {
             rb.velocity = new Vector2 (rb.velocity.x, y * moveSpeed);
         } else if (!coll.onWall) {
-            rb.velocity = new Vector2 (x * moveSpeed, rb.velocity.y);
+            rb.velocity = new Vector2 ( (x+wallJumpModifier) * moveSpeed, rb.velocity.y);
         }
     
     }
 
     private void Jump (float x, float y) {
-        if (x == 0) {
+        if (x == 0 && !coll.onWall) {
             rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
-        } else if (coll.onWall) {
+        } else if (wallGrab) {
             switch (coll.Wall) {
                 case -1: //Wall on the left of the character
                     if (x < 0) {
@@ -83,6 +91,10 @@ public class PlatformerMovement : MonoBehaviour
                     }
                     break;
             }
+            
+        } else if (coll.onWall) {
+                rb.velocity = new Vector2 (rb.velocity.x - jumpForce * coll.Wall, jumpForce);
+                wallJumpModifier = -coll.Wall;
         } else {
             rb.velocity = new Vector2 (x * jumpForce, jumpForce);
         }
