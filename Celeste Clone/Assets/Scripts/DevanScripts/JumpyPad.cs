@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class JumpyPad : MonoBehaviour
 {
-    public float jumpForce = 12;
+    public float padForce = 12;
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.name.Equals("Player"))
         {
             foreach (ContactPoint2D hitPos in collision.contacts)
             {
-                if (hitPos.normal.y == -1)
+
+                if (hitPos.normal.y >= -1)
                 {
-                    AddJumpyPadForce(jumpForce, collision.gameObject);
+                    AddJumpyPadForce(padForce, collision.gameObject);
                 }
             }
         }
