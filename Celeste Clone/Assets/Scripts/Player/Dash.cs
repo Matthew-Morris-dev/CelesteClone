@@ -15,10 +15,10 @@ public class Dash : MonoBehaviour
         [HideInInspector] public PlatformerMovement movement;
 
     [Header("Control Values")]
-        public float DashStrength = 10;
-        public float ResetTime = 0.25f;
+        public float DashStrength = 25;
+        public float ResetTime = 0.15f;
         public float dragRate = 3;
-        public float MaxDrag = 12;
+        public float MaxDrag = 15;
         [SerializeField] private bool canDash;
         [SerializeField] private float timeToReset = 0;
 
