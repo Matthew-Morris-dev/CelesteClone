@@ -23,10 +23,9 @@ public class PlatformerMovement : MonoBehaviour
         public float slideSpeedMultiplier = 0.7f;
         public float grabResetTime = 0.4f;
         public float climbingSpeed = 3f;
-        public float WallJumpRecoverSpeed = 1f;
         public bool facing; //*  True = Sprite Left, false = Sprite Right
         private bool wallGrab;
-        private float wallJumpModifier = 0;
+        private int wallJumpModifier = 0;
         private bool canGrab = true;
         
     // Start is called before the first frame update
@@ -71,8 +70,6 @@ public class PlatformerMovement : MonoBehaviour
         if (wallJumpModifier != 0) {
             if (coll.grounded) {
                 wallJumpModifier = 0;
-            } else {
-                wallJumpModifier = Mathf.Lerp(wallJumpModifier, 0, WallJumpRecoverSpeed * Time.deltaTime);
             }
         }
 
@@ -93,8 +90,10 @@ public class PlatformerMovement : MonoBehaviour
             if (rb.velocity.y < 0){
                 if ( Mathf.RoundToInt(x + coll.Wall) != 0 && Mathf.RoundToInt(x + coll.Wall) != coll.Wall ) {
                     rb.velocity = new Vector2 (rb.velocity.x, slideSpeedMultiplier * rb.velocity.y); //? Sliding
+                    Debug.Log("Sliding");
                 } else {
                     rb.velocity = new Vector2 (x, rb.velocity.y); //? Not Sliding
+                    Debug.Log("Not Sliding");
                 }
             }
         } 
@@ -133,11 +132,9 @@ public class PlatformerMovement : MonoBehaviour
         } else { // Jump while grounded and pressing arrows
             rb.velocity = new Vector2 (x * jumpForce, jumpForce);
         }
-    } 
+    }
 
     private void resetGrabStatus() {
         canGrab = true;
     }
-    
-    
 }
