@@ -2559,7 +2559,9 @@ MonoBehaviour:
   fallMultiplier: 2.5
   jumpDifference: 0.5
   slideSpeedMultiplier: 0.7
+  WallJumpRecoveryTime: 1
   grabResetTime: 0.4
+  climbingSpeed: 3
   facing: 0
 --- !u!114 &1248095146
 MonoBehaviour:
