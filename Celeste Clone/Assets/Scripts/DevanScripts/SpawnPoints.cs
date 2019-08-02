@@ -7,6 +7,7 @@ public class SpawnPoints : MonoBehaviour
     public List<Transform> targets;
     public float moveSpeed;
 
+    public Transform OFFSCREENPOS;
     public Transform Point0;
     public Transform Point1;
     public Transform Point2;
@@ -31,11 +32,18 @@ public class SpawnPoints : MonoBehaviour
         }
     }
 
-    public void RespawnPlayer()
+    public void StartRespawnTransition()
     {
         GameObject.Find("Transition").GetComponent<CelesteTransition>().Transition();
 
-        switch(curr_level)
+        GameObject.Find("Player").GetComponent<Transform>().position = OFFSCREENPOS.position;
+
+        Invoke("ResetPlayertoSpawnPoint", 0.4f);
+    }
+
+    private void ResetPlayertoSpawnPoint()
+    {
+        switch (curr_level)
         {
             case 0:
                 GameObject.Find("Player").GetComponent<Transform>().position = Point0.position;

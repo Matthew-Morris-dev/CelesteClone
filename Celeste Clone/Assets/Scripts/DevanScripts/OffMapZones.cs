@@ -14,6 +14,6 @@ public class OffMapZones : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        GameObject.Find("SpawnPoints").GetComponent<SpawnPoints>().RespawnPlayer();
+        GameObject.Find("SpawnPoints").GetComponent<SpawnPoints>().StartRespawnTransition();
     }
 }
