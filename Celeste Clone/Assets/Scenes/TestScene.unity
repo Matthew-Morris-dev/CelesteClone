@@ -2556,10 +2556,11 @@ MonoBehaviour:
   character: {fileID: 681287339}
   moveSpeed: 5
   jumpForce: 6
-  fallMultiplier: 2.5
-  jumpDifference: 0.5
+  fallMultiplier: 3
+  jumpDifference: 0.7
   slideSpeedMultiplier: 0.7
   grabResetTime: 0.4
+  climbingSpeed: 3
   facing: 0
 --- !u!114 &1248095146
 MonoBehaviour:
