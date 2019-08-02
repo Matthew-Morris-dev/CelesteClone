@@ -21,11 +21,12 @@ public class PlatformerMovement : MonoBehaviour
         public float fallMultiplier = 2.5f;
         public float jumpDifference = 0.5f;
         public float slideSpeedMultiplier = 0.7f;
+        public float WallJumpRecoveryTime = 1f;
         public float grabResetTime = 0.4f;
         public float climbingSpeed = 3f;
         public bool facing; //*  True = Sprite Left, false = Sprite Right
         private bool wallGrab;
-        private int wallJumpModifier = 0;
+        private float wallJumpModifier = 0;
         private bool canGrab = true;
         
     // Start is called before the first frame update
@@ -70,6 +71,8 @@ public class PlatformerMovement : MonoBehaviour
         if (wallJumpModifier != 0) {
             if (coll.grounded) {
                 wallJumpModifier = 0;
+            } else {
+                wallJumpModifier = Mathf.Lerp(wallJumpModifier, 0, WallJumpRecoveryTime * Time.deltaTime);
             }
         }
 
