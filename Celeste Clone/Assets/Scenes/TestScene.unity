@@ -2233,7 +2233,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1176104740
 GameObject:
@@ -2596,11 +2596,13 @@ MonoBehaviour:
   grounded: 0
   onWall: 0
   Wall: 0
+  TopOfWall: 0
   CollisionLayer:
     serializedVersion: 2
     m_Bits: 512
   collisionRadius: 0.3
   groundCollisionBoxSize: 0.4
+  TopOfWallColliderSize: 0.2
   bottomOffset: {x: 0, y: -0.35}
   rightOffset: {x: 0.1, y: 0}
   leftOffset: {x: -0.1, y: 0}
