@@ -17,17 +17,18 @@ public class PlatformerMovement : MonoBehaviour
 
     [Header("Control Variables")]
         public float moveSpeed = 5f; 
-        public float jumpForce = 3f;
+        public float jumpForce = 6f;
         public float fallMultiplier = 2.5f;
         public float jumpDifference = 0.5f;
         public float slideSpeedMultiplier = 0.7f;
-        public float WallJumpRecoveryTime = 1f;
+        public float WallJumpRecoveryTime = 0.5f;
         public float grabResetTime = 0.4f;
         public float climbingSpeed = 3f;
         public bool facing; //*  True = Sprite Left, false = Sprite Right
         private bool wallGrab;
         private float wallJumpModifier = 0;
         private bool canGrab = true;
+        private float SlidingJumpMultipier;
         
     // Start is called before the first frame update
     void Start()
@@ -88,15 +89,13 @@ public class PlatformerMovement : MonoBehaviour
         if (wallGrab) { //? Holding the wall
             rb.velocity = new Vector2 (rb.velocity.x, y * climbingSpeed);
         } else if (!coll.onWall) { //? Not holding and not near the wall
-            rb.velocity = new Vector2 ( (x+wallJumpModifier) * moveSpeed, rb.velocity.y);
+                rb.velocity = new Vector2 ( (x+wallJumpModifier) * moveSpeed * 0.75f, rb.velocity.y);
         } else { //? Not holding but on the wall 
             if (rb.velocity.y < 0){
                 if ( Mathf.RoundToInt(x + coll.Wall) != 0 && Mathf.RoundToInt(x + coll.Wall) != coll.Wall ) {
                     rb.velocity = new Vector2 (rb.velocity.x, slideSpeedMultiplier * rb.velocity.y); //? Sliding
-                    Debug.Log("Sliding");
                 } else {
                     rb.velocity = new Vector2 (x, rb.velocity.y); //? Not Sliding
-                    Debug.Log("Not Sliding");
                 }
             }
         } 
@@ -135,6 +134,9 @@ public class PlatformerMovement : MonoBehaviour
         } else { // Jump while grounded and pressing arrows
             rb.velocity = new Vector2 (x * jumpForce, jumpForce);
         }
+
+        rb.drag = 4f;
+
     }
 
     private void resetGrabStatus() {

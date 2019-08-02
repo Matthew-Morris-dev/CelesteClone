@@ -21,12 +21,14 @@ public class CollisionDetection : MonoBehaviour
         public bool grounded;
         public bool onWall;
         public int Wall;
+        public bool TopOfWall;
 
 
     [Header("Collision Controllers")]
         public LayerMask CollisionLayer; 
         [Range(0,1f)] public float collisionRadius = 0.25f;
         [Range(0,2f)] public float groundCollisionBoxSize = 0.5f;
+        [Range(0,1f)] public float TopOfWallColliderSize = 0.2f;
         public Vector2 bottomOffset, rightOffset, leftOffset;
 
 
@@ -34,8 +36,8 @@ public class CollisionDetection : MonoBehaviour
     void Update()
     {
         grounded = Physics2D.OverlapBox((Vector2)transform.position + bottomOffset, new Vector2(groundCollisionBoxSize, 0.2f), 0, CollisionLayer);
-        Wall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, CollisionLayer) ? 1 : 0;
-        Wall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, CollisionLayer) ? -1 : Wall;
+        Wall = Physics2D.OverlapBox((Vector2)transform.position + rightOffset, new Vector2(0.2f, collisionRadius), 0, CollisionLayer) ? 1 : 0;
+        Wall = Physics2D.OverlapBox((Vector2)transform.position + leftOffset,  new Vector2(0.2f, collisionRadius), 0, CollisionLayer) ? -1 : Wall;
 
         onWall = Wall != 0;
     }
@@ -44,8 +46,8 @@ public class CollisionDetection : MonoBehaviour
         Gizmos.color = Color.red;
         
         Gizmos.DrawWireCube((Vector2)transform.position + bottomOffset, new Vector2 (groundCollisionBoxSize, 0.2f));
-        Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, collisionRadius);
-        Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, collisionRadius);
+        Gizmos.DrawWireCube((Vector2)transform.position + rightOffset,  new Vector2(0.2f, collisionRadius));
+        Gizmos.DrawWireCube((Vector2)transform.position + leftOffset, new Vector2(0.2f, collisionRadius));
 
     }
 }

@@ -2423,14 +2423,18 @@ MonoBehaviour:
   grounded: 0
   onWall: 0
   Wall: 0
+  TopOfWall: 0
   CollisionLayer:
     serializedVersion: 2
     m_Bits: 512
   collisionRadius: 0.25
   groundCollisionBoxSize: 0.5
+  TopOfWallColliderSize: 0.2
   bottomOffset: {x: 0, y: -0.25}
   rightOffset: {x: 0.25, y: 0}
   leftOffset: {x: -0.25, y: 0}
+  wallCheckOffsetLeft: {x: 0, y: 0}
+  wallCheckOffsetRight: {x: 0, y: 0}
 --- !u!114 &1248095145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5656,14 +5660,18 @@ MonoBehaviour:
   grounded: 0
   onWall: 0
   Wall: 0
+  TopOfWall: 0
   CollisionLayer:
     serializedVersion: 2
     m_Bits: 512
   collisionRadius: 0.3
   groundCollisionBoxSize: 0.4
+  TopOfWallColliderSize: 0.1
   bottomOffset: {x: 0, y: -0.35}
   rightOffset: {x: 0.1, y: 0}
   leftOffset: {x: -0.1, y: 0}
+  wallCheckOffsetLeft: {x: -0.3, y: -0.4}
+  wallCheckOffsetRight: {x: 0.3, y: -0.4}
 --- !u!114 &1021247801574133145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6138,14 +6146,18 @@ MonoBehaviour:
   grounded: 0
   onWall: 0
   Wall: 0
+  TopOfWall: 0
   CollisionLayer:
     serializedVersion: 2
     m_Bits: 512
   collisionRadius: 0.3
   groundCollisionBoxSize: 0.4
+  TopOfWallColliderSize: 0.2
   bottomOffset: {x: 0, y: -0.35}
   rightOffset: {x: 0.1, y: 0}
   leftOffset: {x: -0.1, y: 0}
+  wallCheckOffsetLeft: {x: 0, y: 0}
+  wallCheckOffsetRight: {x: 0, y: 0}
 --- !u!114 &2810444467108379803
 MonoBehaviour:
   m_ObjectHideFlags: 0
