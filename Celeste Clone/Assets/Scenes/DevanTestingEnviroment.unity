@@ -608,6 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6153bbb3c331184d961b15ebb53cd50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   time_to_break: 0.5
   time_to_comeback: 2
 --- !u!4 &308569224 stripped
@@ -1047,6 +1048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6153bbb3c331184d961b15ebb53cd50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   time_to_break: 0.5
   time_to_comeback: 2
 --- !u!1 &478335010
@@ -1639,6 +1641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6153bbb3c331184d961b15ebb53cd50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   time_to_break: 0.5
   time_to_comeback: 2
 --- !u!50 &747925886
@@ -2139,6 +2142,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1118518951
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1862705893366467427, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_Name
+      value: --Player Objects-- (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862705893366467424, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d63764c7cabaf0489573e592e6ced0d, type: 3}
 --- !u!1 &1123555304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,6 +2423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6153bbb3c331184d961b15ebb53cd50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   time_to_break: 0.5
   time_to_comeback: 2
 --- !u!1 &1157873884
@@ -2566,7 +2639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1176927346
 Transform:
   m_ObjectHideFlags: 0
@@ -2701,6 +2774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458de8d5bb6eee145adf2fd313bfc822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LandSound: {fileID: 0}
   grounded: 0
   onWall: 0
   Wall: 0
@@ -2741,6 +2815,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   coll: {fileID: 0}
   animControl: {fileID: 0}
+  JumpSound: {fileID: 0}
   character: {fileID: 0}
   moveSpeed: 5
   jumpForce: 3
@@ -8206,6 +8281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   padForce: 10
+  animator: {fileID: 0}
   jumped: 0
 --- !u!1 &1687258581
 GameObject:
@@ -9491,6 +9567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458de8d5bb6eee145adf2fd313bfc822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LandSound: {fileID: 0}
   grounded: 0
   onWall: 0
   Wall: 0
@@ -9519,6 +9596,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   coll: {fileID: 0}
   animControl: {fileID: 0}
+  JumpSound: {fileID: 0}
   character: {fileID: 1021247799997921435}
   moveSpeed: 5
   jumpForce: 6
@@ -9545,10 +9623,17 @@ MonoBehaviour:
   coll: {fileID: 0}
   movement: {fileID: 0}
   animControl: {fileID: 0}
+  SoundEffect: {fileID: 0}
+  Clone1: {fileID: 0}
+  Clone2: {fileID: 0}
+  visible: {r: 0, g: 0, b: 0, a: 0}
+  invisible: {r: 0, g: 0, b: 0, a: 0}
   DashStrength: 25
   ResetTime: 0.15
   dragRate: 3
   MaxDrag: 15
+  cloneOneDistance: 0.2
+  cloneTwoDistance: 0.5
   canDash: 0
   timeToReset: 0
 --- !u!114 &1021247801574133147
@@ -9976,6 +10061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458de8d5bb6eee145adf2fd313bfc822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LandSound: {fileID: 0}
   grounded: 0
   onWall: 0
   Wall: 0
@@ -10004,6 +10090,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   coll: {fileID: 0}
   animControl: {fileID: 0}
+  JumpSound: {fileID: 0}
   character: {fileID: 2810444467596364185}
   moveSpeed: 5
   jumpForce: 6
@@ -10109,10 +10196,17 @@ MonoBehaviour:
   coll: {fileID: 0}
   movement: {fileID: 0}
   animControl: {fileID: 0}
+  SoundEffect: {fileID: 0}
+  Clone1: {fileID: 0}
+  Clone2: {fileID: 0}
+  visible: {r: 0, g: 0, b: 0, a: 0}
+  invisible: {r: 0, g: 0, b: 0, a: 0}
   DashStrength: 25
   ResetTime: 0.15
   dragRate: 3
   MaxDrag: 15
+  cloneOneDistance: 0.2
+  cloneTwoDistance: 0.5
   canDash: 0
   timeToReset: 0
 --- !u!114 &5695186141410907462
@@ -10127,6 +10221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458de8d5bb6eee145adf2fd313bfc822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LandSound: {fileID: 0}
   grounded: 0
   onWall: 0
   Wall: 0
@@ -10155,6 +10250,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   coll: {fileID: 0}
   animControl: {fileID: 0}
+  JumpSound: {fileID: 0}
   character: {fileID: 5695186143054241861}
   moveSpeed: 5
   jumpForce: 6
