@@ -11,7 +11,8 @@ public class PlatformerMovement : MonoBehaviour
         [HideInInspector] public Rigidbody2D rb;
         [HideInInspector] public CollisionDetection coll;
         [HideInInspector] public Animator animControl;
- 
+        [SerializeField] private AudioSource JumpSound;
+  
     [Header("Object Reference")]
         public SpriteRenderer character;
 
@@ -137,7 +138,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         rb.drag = 4f;
-
+        JumpSound.Play();
     }
 
     private void resetGrabStatus() {
