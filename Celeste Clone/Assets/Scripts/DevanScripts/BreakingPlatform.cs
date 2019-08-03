@@ -5,6 +5,7 @@ using UnityEngine;
 public class BreakingPlatform : MonoBehaviour
 {
     Rigidbody2D rd_breakplat;
+    public Animator animator;
 
     [SerializeField]
     private float time_to_break = 0.5f;
@@ -27,11 +28,13 @@ public class BreakingPlatform : MonoBehaviour
 
     void BreakPlatform()
     {
-        this.gameObject.SetActive(false);
+        this.gameObject.GetComponent<Collider2D>().enabled = false;
+        animator.SetBool("isActive", false);
     }
 
     void BringBackPlat()
     {
-        this.gameObject.SetActive(true);
+        this.gameObject.GetComponent<Collider2D>().enabled = true;
+        animator.SetBool("isActive", true);
     }
 }
