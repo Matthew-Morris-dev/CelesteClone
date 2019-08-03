@@ -5,6 +5,7 @@ using UnityEngine;
 public class JumpyPad : MonoBehaviour
 {
     public float padForce = 12;
+    public Animator animator;
 
     public bool jumped = false;
     
@@ -20,6 +21,7 @@ public class JumpyPad : MonoBehaviour
                     if(!jumped)
                     {
                         AddJumpyPadForce(padForce, collision.gameObject);
+                        animator.SetTrigger("Jump");
                     }
                     jumped = true;
                 }
