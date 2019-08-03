@@ -44,14 +44,20 @@ public class PlatformerMovement : MonoBehaviour
         
         wallGrab = coll.onWall && Input.GetButton("Grab") && canGrab;
 
+        animControl.SetBool("ClimbButtonDown", wallGrab);
+        animControl.SetBool("Grounded", coll.grounded);
+        animControl.SetBool("OnWall", coll.onWall);
+
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
         Move(x, y);
         if (x < 0) {facing = true;} 
         if (x > 0) {facing = false;}
-        
-        character.flipX = facing;
+
+        if (coll.grounded) {
+            character.flipX = facing;
+        }
 
         if (Input.GetButtonDown("Jump")) {
             if (coll.grounded || coll.onWall)
@@ -78,25 +84,37 @@ public class PlatformerMovement : MonoBehaviour
             }
         }
 
-        animControl.SetFloat("Motion_X", Mathf.Abs(rb.velocity.x));
+        
         
     }
 
     private void Move (float x, float y) {
         if (coll.grounded) {
             rb.velocity = new Vector2 (x * moveSpeed, rb.velocity.y);
+            //! Walking animations
+            animControl.SetBool("Walking", x != 0);
         } 
 
         if (wallGrab) { //? Holding the wall
             rb.velocity = new Vector2 (rb.velocity.x, y * climbingSpeed);
+            if (y != 0) {
+                //! Climbing animation
+                animControl.SetBool("Climbing", y != 0);
+                animControl.SetFloat("ClimbSpeed", y);
+            } else {
+                //! Holding animations
+                animControl.SetBool("LookingAtWall", Mathf.RoundToInt(x + coll.Wall) != 0);
+            }
         } else if (!coll.onWall) { //? Not holding and not near the wall
                 rb.velocity = new Vector2 ( (x+wallJumpModifier) * moveSpeed * 0.75f, rb.velocity.y);
         } else { //? Not holding but on the wall 
             if (rb.velocity.y < 0){
                 if ( Mathf.RoundToInt(x + coll.Wall) != 0 && Mathf.RoundToInt(x + coll.Wall) != coll.Wall ) {
                     rb.velocity = new Vector2 (rb.velocity.x, slideSpeedMultiplier * rb.velocity.y); //? Sliding
+                    //! Sliding down wall animation
                 } else {
                     rb.velocity = new Vector2 (x, rb.velocity.y); //? Not Sliding
+                    //! Falling animation
                 }
             }
         } 
@@ -109,6 +127,7 @@ public class PlatformerMovement : MonoBehaviour
 
         if (x == 0 && !coll.onWall) { // Jump when grounded and not pressing arrows or near wall
             rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
+            //! Jump animations
             animControl.SetTrigger("Jump");
         } else if (wallGrab) { // Jump while holding the wall
             canGrab = false;
