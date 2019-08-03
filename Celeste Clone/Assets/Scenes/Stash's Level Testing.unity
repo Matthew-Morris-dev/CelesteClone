@@ -5935,7 +5935,7 @@ PrefabInstance:
     - target: {fileID: 4328007524203459306, guid: e2ef741f2d9987d4da12ed9e7705f51b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 4328007524203459306, guid: e2ef741f2d9987d4da12ed9e7705f51b,
         type: 3}
@@ -5992,6 +5992,12 @@ PrefabInstance:
       propertyPath: DashStrength
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 4328007525852153829, guid: e2ef741f2d9987d4da12ed9e7705f51b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d38a820a0c99e1a4bab42be2d5f0516a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2ef741f2d9987d4da12ed9e7705f51b, type: 3}
 --- !u!1 &1467620264
@@ -6573,7 +6579,7 @@ PrefabInstance:
     - target: {fileID: 5254864461418802680, guid: 1159646af099b3d4abd4a412e35f8d07,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5254864461418802681, guid: 1159646af099b3d4abd4a412e35f8d07,
         type: 3}
@@ -7827,6 +7833,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2583984975341383803, guid: 94ea7bb9bd6d08447ade37a28bf01c62,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4edeebb54bc101946b0cac2c3a92ef9e, type: 2}
     - target: {fileID: 4310344047709142007, guid: 94ea7bb9bd6d08447ade37a28bf01c62,
         type: 3}
       propertyPath: animator
@@ -7867,11 +7878,6 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 0.6181818
       objectReference: {fileID: 0}
-    - target: {fileID: 2583984975341383803, guid: 94ea7bb9bd6d08447ade37a28bf01c62,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 4edeebb54bc101946b0cac2c3a92ef9e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ea7bb9bd6d08447ade37a28bf01c62, type: 3}
 --- !u!114 &5695186141410907460
