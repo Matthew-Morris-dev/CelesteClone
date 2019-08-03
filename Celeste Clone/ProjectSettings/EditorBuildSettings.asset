@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 57e41b58f22751a4ba27c99a1e16d191
+  - enabled: 1
+    path: Assets/Scenes/DevanTestingEnviroment.unity
+    guid: 4e8358b6be4fc034f987711bf4170880
   m_configObjects: {}
