@@ -16,11 +16,23 @@ public class Dash : MonoBehaviour
         [HideInInspector] public Animator animControl;
         [SerializeField] private AudioSource SoundEffect;
 
+    [Header("Object Reference")]
+        public SpeedClones Clone1;    
+        public SpeedClones Clone2;
+
+        public Color visible;
+        public Color invisible;
+
     [Header("Control Values")]
         public float DashStrength = 25;
         public float ResetTime = 0.15f;
         public float dragRate = 3;
         public float MaxDrag = 15;
+
+        [Space]
+
+        public float cloneOneDistance = 0.2f;
+        public float cloneTwoDistance = 0.5f;
         [SerializeField] private bool canDash;
         [SerializeField] private float timeToReset = 0;
 
@@ -43,12 +55,14 @@ public class Dash : MonoBehaviour
         if (coll.grounded && timeToReset <= 0) {
             canDash = true;
             movement.enabled = true;
+
         } else if (timeToReset > 0) {
             timeToReset -= Time.deltaTime;
+            
         } else {
             movement.enabled = true;
         }
-
+        
         rb.drag = Mathf.Lerp (rb.drag, 0, dragRate * Time.deltaTime);
 
         if (coll.onWall) {
@@ -72,6 +86,16 @@ public class Dash : MonoBehaviour
             rb.velocity = new Vector2 (x * DashStrength, y  * DashStrength);
             rb.drag = MaxDrag;
             movement.enabled = false;
+            Invoke("CloneOne", cloneOneDistance);
+            Invoke("CloneTwo", cloneTwoDistance);
         }
+    }
+
+    private void CloneOne () {
+        Clone1.SetPosition(transform.position, rb.velocity.x < 0);
+    }
+
+    private void CloneTwo() {
+        Clone2.SetPosition(transform.position, rb.velocity.x < 0);
     }
 }

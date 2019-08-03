@@ -302,10 +302,16 @@ MonoBehaviour:
   movement: {fileID: 0}
   animControl: {fileID: 0}
   SoundEffect: {fileID: 5493970692750898049}
-  DashStrength: 25
-  ResetTime: 0.15
-  dragRate: 3
-  MaxDrag: 15
+  Clone1: {fileID: 0}
+  Clone2: {fileID: 0}
+  visible: {r: 1, g: 1, b: 1, a: 1}
+  invisible: {r: 1, g: 1, b: 1, a: 0}
+  DashStrength: 40
+  ResetTime: 0.25
+  dragRate: 2
+  MaxDrag: 12
+  cloneOneDistance: 0.1
+  cloneTwoDistance: 0.35
   canDash: 0
   timeToReset: 0
 --- !u!1 &4328007525852153831
@@ -375,7 +381,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: daab4352fa8ae43478b7474e68137388, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
