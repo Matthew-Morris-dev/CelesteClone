@@ -78,7 +78,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         animControl.SetFloat("Motion_X", Mathf.Abs(rb.velocity.x));
-        //TODO animControl.SetFloat("Motion_Y", rb.velocity.y);
+        
     }
 
     private void Move (float x, float y) {
@@ -108,6 +108,7 @@ public class PlatformerMovement : MonoBehaviour
 
         if (x == 0 && !coll.onWall) { // Jump when grounded and not pressing arrows or near wall
             rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
+            animControl.SetTrigger("Jump");
         } else if (wallGrab) { // Jump while holding the wall
             canGrab = false;
             Invoke("resetGrabStatus", grabResetTime);

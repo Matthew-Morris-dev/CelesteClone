@@ -13,6 +13,7 @@ public class Dash : MonoBehaviour
         [HideInInspector] public Rigidbody2D rb;
         [HideInInspector] public CollisionDetection coll;
         [HideInInspector] public PlatformerMovement movement;
+        [HideInInspector] public Animator animControl;
 
     [Header("Control Values")]
         public float DashStrength = 25;
@@ -29,6 +30,7 @@ public class Dash : MonoBehaviour
         if (!rb) rb = GetComponent<Rigidbody2D>();
         if (!coll) coll = GetComponent<CollisionDetection>();
         if (!movement) movement = GetComponent<PlatformerMovement>();
+        if (!animControl) animControl = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -64,7 +66,7 @@ public class Dash : MonoBehaviour
             }
 
             timeToReset = ResetTime;
-
+            animControl.SetTrigger("Dash");
             rb.velocity = new Vector2 (x * DashStrength, y  * DashStrength);
             rb.drag = MaxDrag;
             movement.enabled = false;
