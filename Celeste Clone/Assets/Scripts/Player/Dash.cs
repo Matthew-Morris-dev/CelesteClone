@@ -14,6 +14,7 @@ public class Dash : MonoBehaviour
         [HideInInspector] public CollisionDetection coll;
         [HideInInspector] public PlatformerMovement movement;
         [HideInInspector] public Animator animControl;
+        [SerializeField] private AudioSource SoundEffect;
 
     [Header("Control Values")]
         public float DashStrength = 25;
@@ -67,6 +68,7 @@ public class Dash : MonoBehaviour
 
             timeToReset = ResetTime;
             animControl.SetTrigger("Dash");
+            SoundEffect.Play();
             rb.velocity = new Vector2 (x * DashStrength, y  * DashStrength);
             rb.drag = MaxDrag;
             movement.enabled = false;

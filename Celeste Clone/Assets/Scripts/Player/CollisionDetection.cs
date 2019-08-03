@@ -17,6 +17,9 @@ using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
 {
+    [Header("Component Reference")]
+        [SerializeField] private AudioSource LandSound;
+
     [Header("Results")]
         public bool grounded;
         public bool onWall;
@@ -35,7 +38,11 @@ public class CollisionDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool prevStatus = grounded;
         grounded = Physics2D.OverlapBox((Vector2)transform.position + bottomOffset, new Vector2(groundCollisionBoxSize, 0.2f), 0, CollisionLayer);
+        if (!prevStatus && grounded) {
+            LandSound.Play();
+        }
         Wall = Physics2D.OverlapBox((Vector2)transform.position + rightOffset, new Vector2(0.2f, collisionRadius), 0, CollisionLayer) ? 1 : 0;
         Wall = Physics2D.OverlapBox((Vector2)transform.position + leftOffset,  new Vector2(0.2f, collisionRadius), 0, CollisionLayer) ? -1 : Wall;
 

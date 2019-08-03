@@ -7,6 +7,8 @@ public class JumpyPad : MonoBehaviour
     public float padForce = 12;
 
     public bool jumped = false;
+
+    private AudioSource JumpPadSound;
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -30,6 +32,10 @@ public class JumpyPad : MonoBehaviour
     void AddJumpyPadForce(float added_force, GameObject player)
     {
         player.GetComponent<Rigidbody2D>().velocity += Vector2.up * added_force;
+        if (!JumpPadSound) {
+            JumpPadSound = GameObject.Find("JumpPadEffect").GetComponent<AudioSource>();
+        }
+        JumpPadSound.Play();
     }
 
     private void OnCollisionExit2D(Collision2D collision)
