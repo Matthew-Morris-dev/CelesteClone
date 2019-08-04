@@ -19,6 +19,7 @@ public class CollisionDetection : MonoBehaviour
 {
     [Header("Component Reference")]
         [SerializeField] private AudioSource LandSound;
+        [SerializeField] private ParticleManager LandEffect;
 
     [Header("Results")]
         public bool grounded;
@@ -42,6 +43,7 @@ public class CollisionDetection : MonoBehaviour
         grounded = Physics2D.OverlapBox((Vector2)transform.position + bottomOffset, new Vector2(groundCollisionBoxSize, 0.2f), 0, CollisionLayer);
         if (!prevStatus && grounded) {
             LandSound.Play();
+            LandEffect.playEffect();
         }
         Wall = Physics2D.OverlapBox((Vector2)transform.position + rightOffset, new Vector2(0.2f, collisionRadius), 0, CollisionLayer) ? 1 : 0;
         Wall = Physics2D.OverlapBox((Vector2)transform.position + leftOffset,  new Vector2(0.2f, collisionRadius), 0, CollisionLayer) ? -1 : Wall;
