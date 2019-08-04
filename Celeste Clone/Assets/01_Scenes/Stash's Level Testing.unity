@@ -2657,6 +2657,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ca2fcb4bb53d2349a2532a6855abcbf, type: 3}
+--- !u!1 &704582367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4310344047709142001, guid: 94ea7bb9bd6d08447ade37a28bf01c62,
+    type: 3}
+  m_PrefabInstance: {fileID: 1196180879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &711916057
 GameObject:
   m_ObjectHideFlags: 0
@@ -5896,6 +5902,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ea7bb9bd6d08447ade37a28bf01c62, type: 3}
+--- !u!1 &1211119611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4310344047709142001, guid: 94ea7bb9bd6d08447ade37a28bf01c62,
+    type: 3}
+  m_PrefabInstance: {fileID: 1675077532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1214404022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1526722516847069759, guid: da9f1a44ac09c4345b192d8a9dfe5cfa,
@@ -16984,6 +16996,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1960011899}
+  - component: {fileID: 1960011900}
   m_Layer: 0
   m_Name: BreakingPlatforms
   m_TagString: Untagged
@@ -17008,6 +17021,29 @@ Transform:
   m_Father: {fileID: 1386758851}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1960011900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960011898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b2eb61841c7884f81fb29a9e993e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform1: {fileID: 704582367}
+  platform2: {fileID: 1211119611}
+  platform3: {fileID: 2118972060}
+  spawnDelay: 2
+  breakDelay: 0.5
+  timer1: 0
+  timer2: 0
+  timer3: 0
+  enabled1: 1
+  enabled2: 1
+  enabled3: 1
 --- !u!1 &1960431702
 GameObject:
   m_ObjectHideFlags: 0
@@ -17761,6 +17797,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ca2fcb4bb53d2349a2532a6855abcbf, type: 3}
+--- !u!1 &2118972060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4310344047709142001, guid: 94ea7bb9bd6d08447ade37a28bf01c62,
+    type: 3}
+  m_PrefabInstance: {fileID: 1098270046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
