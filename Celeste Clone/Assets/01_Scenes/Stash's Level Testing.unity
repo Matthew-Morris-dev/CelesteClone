@@ -421,6 +421,41 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4570978957430050680, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570978956796524461, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570978956796524461, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570978956876285070, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570978956876285070, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570978958298276045, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570978958298276045, guid: 3d63764c7cabaf0489573e592e6ced0d,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d63764c7cabaf0489573e592e6ced0d, type: 3}
 --- !u!4 &159119983 stripped
