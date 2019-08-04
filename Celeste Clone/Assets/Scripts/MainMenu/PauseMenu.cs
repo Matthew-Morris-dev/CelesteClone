@@ -76,7 +76,7 @@ public class PauseMenu : MonoBehaviour
                 btnOptions[selected].color = highlightColor;
             }
 
-            if (Input.GetButtonDown("Jump")) {
+            if (Input.GetButtonDown("Jump") && !Quitting) {
                 switch (selected) {
                     case 0:
                         ResumeGame();
