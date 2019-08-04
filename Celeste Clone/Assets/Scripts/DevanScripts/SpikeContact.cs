@@ -12,20 +12,17 @@ public class SpikeContact : MonoBehaviour
         {
             foreach(ContactPoint2D hitPos in collision.contacts)
             {
-                //if(hitPos.normal.y == -1)
+                if(hitPos.normal.y == -1)
                 {
                     GameObject.Find("SpawnPoints").GetComponent<SpawnPoints>().StartRespawnTransition();
-                    if (!DeathSound)
-                    {
-                        DeathSound = GameObject.Find("DeathSound").GetComponent<AudioSource>();
-                    }
-                    DeathSound.Play();
                 }
             }
 
-            
+            if (!DeathSound) {
+                DeathSound = GameObject.Find("DeathSound").GetComponent<AudioSource>();
+            }
 
-            
+            DeathSound.Play();
         }
     }
 }
