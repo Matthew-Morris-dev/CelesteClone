@@ -26,6 +26,7 @@ public class PlatformerMovement : MonoBehaviour
         public float grabResetTime = 0.4f;
         public float climbingSpeed = 3f;
         public bool facing; //*  True = Sprite Left, false = Sprite Right
+        public bool canMove = true;
         private bool wallGrab;
         private float wallJumpModifier = 0;
         private bool canGrab = true;
@@ -41,50 +42,63 @@ public class PlatformerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        
-        wallGrab = coll.onWall && Input.GetButton("Grab") && canGrab;
+        if (canMove)
+        {
+            wallGrab = coll.onWall && Input.GetButton("Grab") && canGrab;
 
-        animControl.SetBool("ClimbButtonDown", wallGrab);
-        animControl.SetBool("Grounded", coll.grounded);
-        animControl.SetBool("OnWall", coll.onWall);
+            animControl.SetBool("ClimbButtonDown", wallGrab);
+            animControl.SetBool("Grounded", coll.grounded);
+            animControl.SetBool("OnWall", coll.onWall);
 
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+            float x = Input.GetAxis("Horizontal");
+            float y = Input.GetAxis("Vertical");
 
-        Move(x, y);
-        if (x < 0) {facing = true;} 
-        if (x > 0) {facing = false;}
+            Move(x, y);
+            if (x < 0) { facing = true; }
+            if (x > 0) { facing = false; }
 
-        if (coll.grounded) {
-            character.flipX = facing;
-        }
-
-        if (Input.GetButtonDown("Jump")) {
-            if (coll.grounded || coll.onWall)
-                Jump(x, y);
-        }
-
-        if (rb.velocity.y < 0) {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;  
-        } else if (rb.velocity.y > 0 && !Input.GetButton("Jump")) {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - (jumpDifference + 1) ) * Time.deltaTime; 
-        }
-
-        if (wallGrab) {
-            rb.gravityScale = 0;
-        } else {
-            rb.gravityScale = 1;
-        }
-
-        if (wallJumpModifier != 0) {
-            if (coll.grounded) {
-                wallJumpModifier = 0;
-            } else {
-                wallJumpModifier = Mathf.Lerp(wallJumpModifier, 0, WallJumpRecoveryTime * Time.deltaTime);
+            if (coll.grounded)
+            {
+                character.flipX = facing;
             }
-        }
 
-        
+            if (Input.GetButtonDown("Jump"))
+            {
+                if (coll.grounded || coll.onWall)
+                    Jump(x, y);
+            }
+
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - (jumpDifference + 1)) * Time.deltaTime;
+            }
+
+            if (wallGrab)
+            {
+                rb.gravityScale = 0;
+            }
+            else
+            {
+                rb.gravityScale = 1;
+            }
+
+            if (wallJumpModifier != 0)
+            {
+                if (coll.grounded)
+                {
+                    wallJumpModifier = 0;
+                }
+                else
+                {
+                    wallJumpModifier = Mathf.Lerp(wallJumpModifier, 0, WallJumpRecoveryTime * Time.deltaTime);
+                }
+            }
+
+        }
         
     }
 

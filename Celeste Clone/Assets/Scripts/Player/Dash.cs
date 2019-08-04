@@ -54,21 +54,21 @@ public class Dash : MonoBehaviour
 
         if (coll.grounded && timeToReset <= 0) {
             canDash = true;
-            movement.enabled = true;
+            movement.canMove = true;
 
         } else if (timeToReset > 0) {
             timeToReset -= Time.deltaTime;
             
         } else {
-            movement.enabled = true;
+            movement.canMove = true;
         }
         
         rb.drag = Mathf.Lerp (rb.drag, 0, dragRate * Time.deltaTime);
-
+        
         if (coll.onWall) {
-            movement.enabled = true;
+            movement.canMove = true;
         }
-
+        
         if (canDash && Input.GetButtonDown("Dash")) {
 
             canDash = false;
@@ -85,7 +85,7 @@ public class Dash : MonoBehaviour
             SoundEffect.Play();
             rb.velocity = new Vector2 (x * DashStrength, y  * DashStrength);
             rb.drag = MaxDrag;
-            movement.enabled = false;
+            movement.canMove = false;
             Invoke("CloneOne", cloneOneDistance);
             Invoke("CloneTwo", cloneTwoDistance);
         }
