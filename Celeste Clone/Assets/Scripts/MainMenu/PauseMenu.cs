@@ -107,8 +107,8 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void RestartGame() {
-        // Respawn Player
         GamePaused = false;
+        SceneManager.LoadScene("Stash's Level Testing");
     }
 
     public void QuitGame () {
