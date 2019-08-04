@@ -32,6 +32,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &4992940037640168777
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2722851269476560381}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.45, y: 0.75}
+  m_Direction: 0
 --- !u!1001 &1862705893985115920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52,7 +68,7 @@ PrefabInstance:
     - target: {fileID: 4328007524203459306, guid: e2ef741f2d9987d4da12ed9e7705f51b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.24
       objectReference: {fileID: 0}
     - target: {fileID: 4328007524203459306, guid: e2ef741f2d9987d4da12ed9e7705f51b,
         type: 3}
@@ -119,8 +135,15 @@ PrefabInstance:
       propertyPath: cloneTwoDistance
       value: 0.25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4328007524203459304, guid: e2ef741f2d9987d4da12ed9e7705f51b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e2ef741f2d9987d4da12ed9e7705f51b, type: 3}
+--- !u!1 &2722851269476560381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4328007524203459309, guid: e2ef741f2d9987d4da12ed9e7705f51b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1862705893985115920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2722851269476560378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4328007524203459306, guid: e2ef741f2d9987d4da12ed9e7705f51b,
@@ -199,19 +222,9 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4518562834394193538, guid: fcc68c51150d9884896a76bcf336a15d,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4518562836007654487, guid: fcc68c51150d9884896a76bcf336a15d,
         type: 3}
       propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4518562836007654487, guid: fcc68c51150d9884896a76bcf336a15d,
-        type: 3}
-      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

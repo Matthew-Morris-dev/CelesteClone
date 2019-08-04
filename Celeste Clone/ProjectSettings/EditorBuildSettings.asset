@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/IntroScene.unity
+    path: Assets/01_Scenes/IntroScene.unity
     guid: 0517410c3bea3bc4c9ef8fe4353556be
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/01_Scenes/MainMenu.unity
     guid: 57e41b58f22751a4ba27c99a1e16d191
   - enabled: 1
-    path: Assets/Scenes/DevanTestingEnviroment.unity
-    guid: 4e8358b6be4fc034f987711bf4170880
+    path: Assets/01_Scenes/Stash's Level Testing.unity
+    guid: c4de1a235bc8f1a449115b92fc5a60fc
   m_configObjects: {}
